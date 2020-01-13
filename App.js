@@ -13,23 +13,24 @@ export default class App extends Component{
   {
     return(
       <View>
-       {/* <Text style={styles.text}>{this.state.title}</Text> */}
+       <Text style={styles.text}>{this.state.title}</Text>
         <SectionList 
          sections={Mobiles}
          keyExtractor={(item, index)=> item+index}
          renderItem={({item})=>{ 
-           const value=item
-           console.log(value.length
-            )
+          
            return (
-           <Text style={styles.item} onPress={(value)=>{
-            console.log(value) 
-            return this.setState({title:value})}} >{item}</Text>
+            <View>
+          <TouchableOpacity onPress={()=>this.setState({title:item})}>
+           <Text style={styles.item} 
+            // onPress={()=> {
+            //   return this.setState({title:item})}}
+           >{item}</Text>
+           </TouchableOpacity>
+           </View>
            )}}
-        //  renderSectionHeader={({section})=>{return <Text style={styles.header}>{section.title}</Text>}}
-        //  onPress={(value)=> {
-        //   console.log(value) 
-        //   return this.setState({title:value})}}
+          renderSectionHeader={({section})=>{return <Text style={styles.header}>{section.title}</Text>}}
+         
         />
       </View>
     )
@@ -56,7 +57,8 @@ const styles = StyleSheet.create({
     fontStyle:'italic',
     backgroundColor: '#cccccc',
     borderRadius: 5,
-    margin:3
+    margin:3,
+    padding:10
   },
   header:{
     fontSize:30,
@@ -65,7 +67,8 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop:15,
     borderRadius:5,
-    textAlign: 'center'
+    textAlign: 'center',
+    padding:10
   },
   text:{
     fontWeight:'bold',
